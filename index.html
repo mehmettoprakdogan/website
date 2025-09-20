@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürdürülebilir Tekstil | Çözüme Katıl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Ana yeşil */
+            --secondary-color: #8BC34A; /* Açık yeşil */
+            --light-bg: #FFFFFF; /* Ana beyaz arka plan */
+            --section-bg: #F8F8F8; /* Bölüm arka planı */
+            --text-color: #333333; /* Koyu gri yazı */
+            --heading-color: #2C3E50; /* Koyu başlık rengi */
+            --border-color: #E0E0E0; /* Kenarlık rengi */
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --hover-shadow: rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background-color: var(--light-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        header nav ul li a {
+            color: var(--heading-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1549487922-2b3f1c97a2c2?q=80&w=1770&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--heading-color);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-bg);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--hover-shadow);
+        }
+
+        section {
+            padding: 6rem 0;
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+        
+        section:nth-of-type(even) {
+            background-color: var(--section-bg);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--hover-shadow);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        #problem-stats .card h3 {
+            color: var(--heading-color);
+        }
+        #problem-stats .card p {
+            color: var(--text-color);
+        }
+
+        #about .about-content {
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        #about .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .team-member {
+            text-align: center;
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .team-member h4 {
+            color: var(--heading-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        #pricing .card {
+            text-align: center;
+        }
+        
+        #pricing .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #pricing .card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        #pricing .card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .accordion-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            background-color: var(--section-bg);
+            color: var(--heading-color);
+            transition: background-color 0.3s;
+        }
+
+        .accordion-title:hover {
+            background-color: #EFEFEF;
+        }
+
+        .accordion-content {
+            padding: 1rem;
+            background-color: var(--light-bg);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-color);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+        
+        .accordion-title span {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+        }
+
+        .accordion-item.active .accordion-title span {
+            transform: rotate(45deg);
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: left;
+            background-color: var(--light-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--heading-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #F0F0F0;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+        }
+
+        footer {
+            background-color: #EFEFEF;
+            color: var(--text-color);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px var(--shadow-color);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modal-fadein 0.3s ease-out;
+        }
+
+        @keyframes modal-fadein {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-close-btn:hover {
+            color: #555;
+        }
+
+        .modal-form h3 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .modal-form .form-group label {
+            color: var(--text-color);
+        }
+
+        .modal-form .form-group input {
+            background-color: var(--section-bg);
+        }
+
+        .modal-form .btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Sürdürülebilir Tekstil</div>
+            <ul>
+                <li><a href="#problem-stats">Sorun</a></li>
+                <li><a href="#solutions">Çözüm</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#team">Takım</a></li>
+                <li><a href="#faq">SSS</a></li>
+                <li><a href="#pricing">Destek</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Modanın Gölgesindeki Büyük Sorun: Tekstil Atıkları</h1>
+                <p>Her yıl milyonlarca ton tekstil atığı çöplüklere gidiyor. Bu döngüyü kırmak için harekete geçme zamanı!</p>
+                <a href="#solutions" class="btn">Çözüme Giden Yol</a>
+            </div>
+        </section>
+
+        <section id="problem-stats" class="container">
+            <h2>Sorunun Büyüklüğü</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Atık Miktarı</h3>
+                    <p>Her yıl üretilen <strong>92 milyon tondan</strong> fazla tekstil atığı, gezegenimizi kirletiyor.</p>
+                </div>
+                <div class="card">
+                    <h3>Su Tüketimi</h3>
+                    <p>Sadece bir kot pantolon üretimi için <strong>7,500 litreden</strong> fazla su harcanıyor.</p>
+                </div>
+                <div class="card">
+                    <h3>Hızlı Moda</h3>
+                    <p>Giysilerin <strong>ortalama kullanım ömrü 7'den</strong> daha az ve sürekli yeni ürünlerle değiştiriliyor.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="container">
+            <h2>Çözüme Giden Yol</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Geri Dönüşüm ve İkinci El</h3>
+                    <p>Eski kıyafetlerinizi geri dönüşüm kutularına bırakın veya ikinci el mağazalarında değerlendirin. Bu, yeni üretim ihtiyacını azaltır.</p>
+                </div>
+                <div class="card">
+                    <h3>Onarım ve Yeniden Tasarım</h3>
+                    <p>Küçük bir yırtık veya deforme olan giysinizi atmak yerine, onarın veya farklı bir tasarımla ona yeni bir hayat verin.</p>
+                </div>
+                <div class="card">
+                    <h3>Bilinçli Tüketim</h3>
+                    <p>Alışveriş yaparken kalıcı, zamansız ve kaliteli parçalara yatırım yapın. "Daha az, daha iyi" felsefesini benimseyin.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="container">
+            <h2>Hakkımızda</h2>
+            <div class="about-content">
+                <p>Projemiz, hızlı moda endüstrisinin çevreye verdiği zararlara dikkat çekmek ve sürdürülebilir tüketim alışkanlıklarını teşvik etmek amacıyla kuruldu. Amacımız, farkındalık yaratmak ve tekstil atığı sorununa karşı bireysel adımlar atılmasını sağlamak.</p>
+                <p>Daha temiz ve yeşil bir gelecek için el ele vererek bu sorunun üstesinden gelebiliriz.</p>
+            </div>
+        </section>
+
+        <section id="team" class="container">
+            <h2>Takımımız</h2>
+            <div class="grid-container">
+                <div class="team-member">
+                    <img src="c:\Users\Özgür Doğan\Downloads\fd1a3450-5565-44cf-877e-3e8c607c5af0 (1).png" alt="Ekip Üyesi 1">
+                    <h4>Mehmet Toprak Doğan</h4>
+                    <p>Proje Lideri</p>
+                </div>
+                <div class="team-member">
+                    <img src="c:\Users\Özgür Doğan\Downloads\fd1a3450-5565-44cf-877e-3e8c607c5af0 (1).png" alt="Ekip Üyesi 2">
+                    <h4>Mehmet Toprak Doğan</h4>
+                    <p>Tasarımcı</p>
+                </div>
+                <div class="team-member">
+                    <img src="c:\Users\Özgür Doğan\Downloads\fd1a3450-5565-44cf-877e-3e8c607c5af0 (1).png" alt="Ekip Üyesi 3">
+                    <h4>Mehmet Toprak Doğan</h4>
+                    <p>İçerik Editörü</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing" class="container">
+            <h2>Bize Destek Olun</h2>
+            <p>Küresel tekstil atığı sorununa karşı mücadelemize katkıda bulunun.</p>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Destekçi</h3>
+                    <p class="price">€10</p>
+                    <p>Sizin sayenizde farkındalık projelerimizi sürdürebiliriz.</p>
+                    <button class="btn contribute-btn">Katkı Sağla</button>
+                </div>
+                <div class="card">
+                    <h3>Gümüş Destekçi</h3>
+                    <p class="price">€50</p>
+                    <p>Web sitemiz için daha fazla içerik ve araştırma yapmamıza yardımcı olun.</p>
+                    <button class="btn contribute-btn">Katkı Sağla</button>
+                </div>
+                <div class="card">
+                    <h3>Altın Destekçi</h3>
+                    <p class="price">€100</p>
+                    <p>Büyük kampanyalar düzenleyerek daha geniş kitlelere ulaşmamızı sağlayın.</p>
+                    <button class="btn contribute-btn">Katkı Sağla</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="container">
+            <h2>Sıkça Sorulan Sorular</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        Tekstil atıklarını nasıl azaltabilirim?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Kıyafetlerinizi daha uzun süre giyerek, onararak, yeniden tasarlayarak ve ikinci el ürünleri tercih ederek tekstil atıklarını azaltabilirsiniz. Geri dönüşüm noktalarını araştırarak eski kıyafetlerinizi bu noktalara bırakın.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        "Hızlı moda" nedir?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Hızlı moda, düşük maliyetle ve hızlı bir şekilde üretilen, sürekli değişen trendlere uygun giysilerdir. Bu iş modeli, aşırı tüketimi ve kısa ömürlü giyim alışkanlıklarını teşvik eder.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        Neden geri dönüşüm önemli?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Tekstil geri dönüşümü, yeni ürünler için ham madde ihtiyacını azaltır. Bu da su ve enerji tasarrufu sağlar, sera gazı emisyonlarını düşürür ve çöplüklere giden atık miktarını azaltır.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="container">
+            <h2>Bize Ulaşın</h2>
+            <p>Soru veya önerileriniz için bize ulaşın.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Adınız Soyadınız</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-posta Adresiniz</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mesajınız</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Gönder</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sürdürülebilir Tekstil &copy; 2024. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <form class="modal-form">
+                <h3>Ödeme Bilgileri</h3>
+                <div class="form-group">
+                    <label for="card-number">Kart Numarası</label>
+                    <input type="text" id="card-number" required placeholder="XXXX-XXXX-XXXX-XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Kart Üzerindeki İsim</label>
+                    <input type="text" id="card-name" required>
+                </div>
+                <div class="grid-container" style="margin-top:0; gap: 1rem;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="card-expiry">Son Kullanma Tarihi</label>
+                        <input type="text" id="card-expiry" required placeholder="MM/YY">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="card-cvv">CVV</label>
+                        <input type="text" id="card-cvv" required placeholder="XXX">
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; color: #d9534f; font-size: 0.9rem;">
+                    **Bu form yalnızca bir gösterimdir. Gerçek kredi kartı bilgilerinizi girmeyiniz.**
+                </p>
+                <button type="submit" class="btn">Ödemeyi Tamamla</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const title = item.querySelector('.accordion-title');
+                title.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const paymentModal = document.getElementById('payment-modal');
+            const contributeBtns = document.querySelectorAll('.contribute-btn');
+            const closeModalBtn = document.querySelector('.modal-close-btn');
+
+            contributeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    paymentModal.style.display = 'flex';
+                });
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                paymentModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === paymentModal) {
+                    paymentModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
